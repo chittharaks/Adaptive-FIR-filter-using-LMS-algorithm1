@@ -1,1 +1,20 @@
-
+module shift_register_16_tb;
+reg Din, clk, rst;
+wire [15:0] Q;
+shift_register_16 uut (Q, Din, clk, rst);
+always #5 clk = ~clk;
+initial begin
+    $monitor("t=%0t Din=%b Q=%b", $time, Din, Q);
+    clk = 0;
+    rst = 1;
+    Din = 0;
+    #10;
+    rst = 0;
+    Din = 1; #10;
+    Din = 0; #10;
+    Din = 1; #10;
+    Din = 1; #10;
+    Din = 0; #10;
+    $finish;
+end
+endmodule
