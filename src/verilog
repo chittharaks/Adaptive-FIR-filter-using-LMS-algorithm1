@@ -1,1 +1,38 @@
+module dff (Q, D, clk, rst);
+output reg Q;
+input D, clk, rst;
+always @(posedge clk or posedge rst)
+begin
+    if (rst)
+        Q <= 1'b0;
+    else
+        Q <= D;
+end
+endmodule
+
+
+module shift_register_16 (Q, Din, clk, rst);
+output [15:0] Q;
+input Din, clk, rst;
+wire [14:0] w;
+dff D0  (Q[0],  Din, clk, rst);
+dff D1  (Q[1],  Q[0],  clk, rst);
+dff D2  (Q[2],  Q[1],  clk, rst);
+dff D3  (Q[3],  Q[2],  clk, rst);
+dff D4  (Q[4],  Q[3],  clk, rst);
+dff D5  (Q[5],  Q[4],  clk, rst);
+dff D6  (Q[6],  Q[5],  clk, rst);
+dff D7  (Q[7],  Q[6],  clk, rst);
+dff D8  (Q[8],  Q[7],  clk, rst);
+dff D9  (Q[9],  Q[8],  clk, rst);
+dff D10 (Q[10], Q[9],  clk, rst);
+dff D11 (Q[11], Q[10], clk, rst);
+dff D12 (Q[12], Q[11], clk, rst);
+dff D13 (Q[13], Q[12], clk, rst);
+dff D14 (Q[14], Q[13], clk, rst);
+dff D15 (Q[15], Q[14], clk, rst);
+
+endmodule
+
+
 
