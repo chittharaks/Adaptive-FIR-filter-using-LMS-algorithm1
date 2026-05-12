@@ -14,7 +14,6 @@ module tb_mult16_pipelined;
         .P(P)
     );
 
-    // Clock generation (10 ns period)
     always #5 clk = ~clk;
 
     initial begin
@@ -24,11 +23,9 @@ module tb_mult16_pipelined;
         A = 0;
         B = 0;
 
-        // Apply reset
         #10;
         rst = 0;
 
-        // Test cases
         #10 A = 10;  B = 5;     // 50
         #10 A = 20;  B = 3;     // 60
         #10 A = 15;  B = 15;    // 225
