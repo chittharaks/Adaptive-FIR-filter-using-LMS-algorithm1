@@ -1,15 +1,5 @@
 
 
-
-module full_adder(output Cout, sum, input A, B, Cin);
-wire w1, w2, w3;
-xor_gate D1(w1, A, B);
-xor_gate D2(sum, w1, Cin);
-and_gate D3(w2, w1, Cin);
-and_gate D4(w3, A, B);
-or_gate D5(Cout, w2, w3);
-endmodule
-
 module cla16 (
     input  [15:0] A,
     input  [15:0] B,
